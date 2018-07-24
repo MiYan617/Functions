@@ -1,8 +1,8 @@
-def traverse_all(d, sum_value, grid_step):
+def traverse_integer_combination(d, sum_value, grid_step):
 #      Traverse all d-dimension combination of integers, sum of which is sum_value, with step size of grid_step.
 #      Note:  I.  d <= sum_value
 #             II. grid_step should be a divisor of sum_value
-#      Example 1: traverse_all(2, 5, 1)
+#      Example 1: traverse_integer_combination(2, 5, 1)
 #      Output:        array([[0, 5],
 #                             [1, 4],
 #                             [2, 3],
@@ -10,7 +10,7 @@ def traverse_all(d, sum_value, grid_step):
 #                             [4, 1],
 #                             [5, 0]])
                     
-#         Example 2: traverse_all(3, 10, 5)
+#         Example 2: traverse_integer_combination(3, 10, 5)
 #         output:    array([[ 0.,  0., 10.],
 #                            [ 0.,  5.,  5.],
 #                            [ 0., 10.,  0.],
@@ -27,7 +27,7 @@ def traverse_all(d, sum_value, grid_step):
         return temp_list
     else:
         for i in range(0, sum_value+1, grid_step):
-            temp = traverse_all(d-1, sum_value-i, grid_step)
+            temp = traverse_integer_combination(d-1, sum_value-i, grid_step)
             num_row = temp.shape[0]
             temp_list = np.hstack((np.ones((num_row, 1)) * i, temp))
             if i == 0:
